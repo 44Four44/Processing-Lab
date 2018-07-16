@@ -1,6 +1,8 @@
 void settings(){
   size(3600, 800);
 };
+
+//this is sp00ky
 PImage photo;
 
 void setup(){
