@@ -4,7 +4,7 @@ void settings() {
 }
 
 int ballAmount = 5;
-int blockAmount = 1;
+int blockAmount = 0;
 
 //amount of healthpacks
 int hpPackAmount = 3;
