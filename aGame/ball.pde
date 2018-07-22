@@ -1,6 +1,7 @@
 class ball {
-
-  float diameter = random(50, 100);
+  //initial diameter for tracking score when ball is destroyed
+  float initialDiameter = random(50, 100);
+  float diameter = initialDiameter;
 
   float x = random(diameter/2, width - diameter/2); 
   float y = random(diameter/2, height - diameter/2);
@@ -11,12 +12,10 @@ class ball {
 
   float velocity = dist(0, 0, xVelocity, yVelocity);
 
-  //initial mass for tracking score when ball is destroyed
-  float initialMass = pow(diameter/2, 2) * PI;
-  float mass = initialMass;
+  float mass = pow(diameter/2, 2) * PI;
 
   float angle = angleOf(0, 0, xVelocity, yVelocity);
-  
+
   //amount of damage the ball does to the player
   float damage = 200;
 
@@ -57,37 +56,37 @@ class ball {
    }
    }
    */
-/*
+  /*
   void ballCheck() {
-    int n = ballCheckNum(this);
-
-    if (n >= 0 && inCollision) {
-      ball that = balls.get(n);
-
-      float phi = angleOf(x, y, that.x, that.y);
-      if (phi > PI) {
-        phi-=PI;
-      }
-      float part = (velocity*cos(angle - phi)*(mass - that.mass) + 
-        2*that.mass*that.velocity*cos(that.angle - phi))/(mass + that.mass);
-
-      xVelocity1 = part*cos(phi)+velocity*sin(angle-phi)*sin(phi);
-      yVelocity1 = part*sin(phi)+velocity*sin(angle-phi)*cos(phi);
-
-      velocity1 = dist(0, 0, xVelocity1, yVelocity1);
-      angle1 = angleOf(0, 0, xVelocity1, yVelocity1);
-
-      if (dist(x, y, that.x, that.y) <= 
-        (diameter + that.diameter)/2) {
-        float overlap = ((diameter + that.diameter)/2 - dist(x, y, that.x, that.y));
-        float angle = angleOf(that.x, that.y, x, y);
-        x = x - overlap*cos(angle);
-        y = y - overlap*sin(angle);
-      }
-    } else {
-    }
-  }
-*/
+   int n = ballCheckNum(this);
+   
+   if (n >= 0 && inCollision) {
+   ball that = balls.get(n);
+   
+   float phi = angleOf(x, y, that.x, that.y);
+   if (phi > PI) {
+   phi-=PI;
+   }
+   float part = (velocity*cos(angle - phi)*(mass - that.mass) + 
+   2*that.mass*that.velocity*cos(that.angle - phi))/(mass + that.mass);
+   
+   xVelocity1 = part*cos(phi)+velocity*sin(angle-phi)*sin(phi);
+   yVelocity1 = part*sin(phi)+velocity*sin(angle-phi)*cos(phi);
+   
+   velocity1 = dist(0, 0, xVelocity1, yVelocity1);
+   angle1 = angleOf(0, 0, xVelocity1, yVelocity1);
+   
+   if (dist(x, y, that.x, that.y) <= 
+   (diameter + that.diameter)/2) {
+   float overlap = ((diameter + that.diameter)/2 - dist(x, y, that.x, that.y));
+   float angle = angleOf(that.x, that.y, x, y);
+   x = x - overlap*cos(angle);
+   y = y - overlap*sin(angle);
+   }
+   } else {
+   }
+   }
+   */
   void wallCheck() {
     if (x < diameter/2 || x > width - diameter/2) {
       xVelocity = -xVelocity;

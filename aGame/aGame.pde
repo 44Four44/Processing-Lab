@@ -15,6 +15,7 @@ float vxMax = 2;
 float vyMin = 0.5;
 float vyMax = 2;
 
+
 ArrayList<ball> balls = new ArrayList<ball>();
 block[] blocks = new block[blockAmount];
 
@@ -26,7 +27,13 @@ ArrayList<bullet> bullets = new ArrayList<bullet>();
 //array for health packs
 ArrayList<hpPack> hpPacks = new ArrayList<hpPack>();
 
+//font
+PFont goodFont;
+
 void setup() {
+  //font
+  goodFont = loadFont("STYuanti-SC-Regular-48.vlw");
+
   //ball generator
   for (int i = 0; i < ballAmount; i++) {
     balls.add (new ball());
@@ -45,6 +52,8 @@ void setup() {
 }
 
 void draw () {
+  me.score+=me.scoreConstant;
+  textFont(goodFont);
 
   colorMode(RGB, 255, 255, 255);
   background(150);
@@ -109,6 +118,12 @@ void draw () {
   noStroke();
   fill(#FF0000, 100);
   rect(0, 0, me.health/me.maxHealth*width, 10);
+
+  // score bar in top left corner
+  textAlign(LEFT);
+  textSize(30);
+  fill(0);
+  text(floor(me.score), 10, 40);
 
 
   //angle function tester
@@ -181,5 +196,4 @@ void mousePressed() {
 
 void mouseReleased() {
   me.shooting = false;
-  
 }

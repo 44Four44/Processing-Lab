@@ -31,8 +31,9 @@ class player {
   float immuneMax = 600;
   float immuneTime = immuneMax;
 
-
-
+  //score of the player
+  float score = 0;
+  float scoreConstant = 1;
   void display() {
     rectMode(CENTER);
     //flashes if player is immune
