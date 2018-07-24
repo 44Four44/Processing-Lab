@@ -58,7 +58,7 @@ class bullet {
         if (part.diameter >= 20 + damage) {
           part.diameter -= damage;
         } else {
-          me.score += part.initialDiameter*30 - (part.initialDiameter*30)%100 + 100;
+          me.score += (part.initialDiameter*30 - (part.initialDiameter*30)%100 + 100)*me.multiplier;
           balls.remove(part);
           balls.add(new ball());
         }

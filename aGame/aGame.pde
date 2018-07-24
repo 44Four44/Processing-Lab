@@ -52,7 +52,15 @@ void setup() {
 }
 
 void draw () {
-  me.score+=me.scoreConstant;
+  //update score
+  me.score += me.scoreConstant*me.multiplier;
+
+  //multiplier increase
+  if (frameCount % 50 == 0) {
+    me.multiplier+=0.01;
+  }
+
+
   textFont(goodFont);
 
   colorMode(RGB, 255, 255, 255);
@@ -124,7 +132,8 @@ void draw () {
   textSize(30);
   fill(0);
   text(floor(me.score), 10, 40);
-
+  //multiplier
+  text("x " + me.multiplier, 10, 70);
 
   //angle function tester
   //line(300, 300, mouseX, mouseY);

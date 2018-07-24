@@ -34,6 +34,9 @@ class player {
   //score of the player
   float score = 0;
   float scoreConstant = 1;
+  
+  //multiplier for not getting hit by balls
+  float multiplier = 1;
   void display() {
     rectMode(CENTER);
     //flashes if player is immune
